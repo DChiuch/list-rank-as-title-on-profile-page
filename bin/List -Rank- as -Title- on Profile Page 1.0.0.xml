@@ -1,0 +1,127 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<plugin name="List &quot;Rank&quot; as &quot;Title&quot; on Profile Page" version_long="10000" version_human="1.0.0" author="Daniel Chiuchiarelli" website="http://www.danielchiuchiarelli.com/" update_check=""><hooks><hook type="S" class="\IPS\Theme\class_core_front_profile" filename="hook"><![CDATA[//<?php
+
+class hook15 extends _HOOK_CLASS_
+{
+
+/* !Hook Data - DO NOT REMOVE */
+public static function hookData() {
+ return array_merge_recursive( array (
+  'profile' => 
+  array (
+    0 => 
+    array (
+      'selector' => '#elProfileInfoColumn > div.ipsAreaBackground_light.ipsPad > div.ipsWidget.ipsWidget_vertical.cProfileSidebarBlock.ipsBox.ipsSpacer_bottom > div.ipsWidget_inner.ipsPad > ul.ipsDataList.ipsDataList_reducedSpacing.cProfileFields > li.ipsDataItem:eq(0) > span.ipsDataItem_generic.ipsDataItem_size3.ipsType_break > strong',
+      'type' => 'replace',
+      'content' => '{{if $member->isOnline() AND $member->location}}
+  <strong>{lang="online_users_location_lang"}</strong>
+{{else}}
+  {{if $member->member_title || $member->rank[\'title\'] || $member->rank[\'image\']}}
+    <strong>{lang="member_ranks_word_custom"}</strong>
+  {else}}
+    <strong>{lang="bday"}</strong>
+  {{endif}}
+{{endif}}',
+    ),
+    1 => 
+    array (
+      'selector' => '#elProfileInfoColumn > div.ipsAreaBackground_light.ipsPad > div.ipsWidget.ipsWidget_vertical.cProfileSidebarBlock.ipsBox.ipsSpacer_bottom > div.ipsWidget_inner.ipsPad > ul.ipsDataList.ipsDataList_reducedSpacing.cProfileFields > li.ipsDataItem:eq(1) > span.ipsDataItem_generic.ipsDataItem_size3.ipsType_break > strong',
+      'type' => 'replace',
+      'content' => '{{if ($member->isOnline() AND $member->location) || $member->member_title || $member->rank[\'title\'] || $member->rank[\'image\']}}
+  <strong>{lang="member_ranks_word_custom"}</strong>
+{{else}}
+  <strong>{lang="bday"}</strong>
+{{endif}}',
+    ),
+  ),
+), parent::hookData() );
+}
+/* End Hook Data */
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+}]]></hook></hooks><tasks/><widgets/><htmlFiles/><cssFiles/><jsFiles/><resourcesFiles/><lang/><versions><version long="10000" human="1.0.0"><![CDATA[//<?php
+
+
+/* To prevent PHP errors (extending class does not exist) revealing path */
+if ( !defined( '\IPS\SUITE_UNIQUE_KEY' ) )
+{
+	header( ( isset( $_SERVER['SERVER_PROTOCOL'] ) ? $_SERVER['SERVER_PROTOCOL'] : 'HTTP/1.0' ) . ' 403 Forbidden' );
+	exit;
+}
+
+/**
+ * Install Code
+ */
+class ips_plugins_setup_install
+{
+	/**
+	 * ...
+	 *
+	 * @return	array	If returns TRUE, upgrader will proceed to next step. If it returns any other value, it will set this as the value of the 'extra' GET parameter and rerun this step (useful for loops)
+	 */
+	public function step1()
+	{
+		
+
+		return TRUE;
+	}
+	
+	// You can create as many additional methods (step2, step3, etc.) as is necessary.
+	// Each step will be executed in a new HTTP request
+}]]></version></versions></plugin>
